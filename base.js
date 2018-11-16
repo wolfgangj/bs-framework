@@ -12,6 +12,7 @@ var bs = {
   ,
   plugin: function(name, init, body) {
     var creator = function(element, config) {
+      config.self = config.self || {};
       this.self = config.self;
       config.self.plugin = this;
       config.self.element = element;
@@ -21,31 +22,31 @@ var bs = {
     plugin[name].prototype = {
       pluginName: name,
       constructor: creator,
-      config: function(data) {
-        data.self = data.self || this.self;
-        var element = data.self.element;
-        for(var attr in data) {
+      config: function(config) {
+        config.self = config.self || this.self;
+        var element = config.self.element;
+        for(var attr in config) {
           switch(attr) {
             case 'style':
-              element.setAttribute('style', data.style);
+              element.setAttribute('style', config.style);
               break;
             case 'class':
-              element.className += ' ' + data.class;
+              element.className += ' ' + config.class;
               break;
             case 'kind':
-              if(data.kind !== this.pluginName) {
-                console.error('internal error: "' + data.kind + '" !== "' + this.pluginName + '"');
+              if(config.kind !== this.pluginName) {
+                console.error('internal error: "' + config.kind + '" !== "' + this.pluginName + '"');
               }
               break;
             case 'self':
               break;
             case 'onclick':
-              element.onclick = data.self[data.onclick].bind(data.self);
+              element.onclick = config.self[config.onclick].bind(config.self);
               break;
             default:
               var setter = body.configurator[attr];
               if(setter) {
-                setter.bind(body)(element, data[attr]);
+                setter.bind(body)(this, config[attr]);
               } else {
                 console.warn('unknown configuration attribute "' + attr + '" for ' +
                              Object.getPrototypeOf(this).pluginName);

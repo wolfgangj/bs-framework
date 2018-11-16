@@ -1,13 +1,16 @@
 var app = bs.app({
-  kind: 'Text',
-  text: 'It worked!',
-  class: 'Text--em',
-  style: 'color:red',
-  onclick: 'click',
-  self: {
-    foo: 'Woohoo!',
-    click: function() {
-      this.plugin.config({ text: this.foo });
+  kind: 'Container',
+  style: 'border:20px;background:grey;',
+  content: {
+    kind: 'Text',
+    text: 'It worked!',
+    class: 'Text--em',
+    onclick: 'click',
+    self: {
+      foo: 'Woohoo!',
+      click: function() {
+        this.plugin.config({ text: this.foo });
+      }
     }
   }
 });
