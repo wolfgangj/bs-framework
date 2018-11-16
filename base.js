@@ -43,7 +43,7 @@ var bs = {
               element.onclick = data.self[data.onclick].bind(data.self);
               break;
             default:
-              var setter = body.setters[attr];
+              var setter = body.configurator[attr];
               if(setter) {
                 setter.bind(body)(element, data[attr]);
               } else {

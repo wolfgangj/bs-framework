@@ -1,7 +1,7 @@
 bs.plugin('Text', function(config) {
   this.plugin.config(config);
 }, {
-  setters: {
+  configurator: {
     text: function(element, value) {
       this.setText(element, value);
     }

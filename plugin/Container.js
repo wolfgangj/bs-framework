@@ -1,7 +1,9 @@
 bs.plugin('Container', function(plugin, element, config) {
-  plugin.config(element, config);
+  this.plugin.config(config);
 }, {
-  content: function(element, value) {
-
+  configurator: {
+    content: function(element, value) {
+      // TODO
+    }
   }
 });
