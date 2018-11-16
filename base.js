@@ -10,7 +10,7 @@ var bs = {
     return new plugin[config.kind](element, config);
   }
   ,
-  plugin: function(name, init, body) {
+  plugin: function(name, init, setters) {
     plugin[name] = init;
     plugin[name].prototype = {
       constructor: init, pluginName: name
@@ -30,7 +30,7 @@ var bs = {
               }
               break;
             default:
-              var setter = body.setters[attr];
+              var setter = setters[attr];
               if(setter) {
                 setter.bind(this)(element, data[attr]);
               } else {
