@@ -10,13 +10,14 @@ var bs = {
     return new plugin[config.kind](element, config);
   }
   ,
-  plugin: function(name, init, body) {
+  plugin: function(name, body) {
     var creator = function(element, config) {
+      this.element = element;
       config.self = config.self || {};
       this.self = config.self;
-      config.self.plugin = this;
-      config.self.element = element;
-      init.bind(config.self)(config);
+      this.self.plugin = this;
+      this.self.element = element;
+      body.init(this, config);
     };
     plugin[name] = creator;
     plugin[name].prototype = {

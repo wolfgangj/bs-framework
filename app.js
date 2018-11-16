@@ -1,6 +1,6 @@
 var app = bs.app({
   kind: 'Container',
-  style: 'border:20px;background:grey;',
+  style: 'border:20px solid PeachPuff;background:grey;padding:10px;',
   content: {
     kind: 'Text',
     text: 'It worked!',
