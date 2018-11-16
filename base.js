@@ -10,12 +10,20 @@ var bs = {
     return new plugin[config.kind](element, config);
   }
   ,
-  plugin: function(name, init, setters) {
-    plugin[name] = init;
+  plugin: function(name, init, body) {
+    var creator = function(element, config) {
+      this.self = config.self;
+      config.self.plugin = this;
+      config.self.element = element;
+      init.bind(config.self)(config);
+    };
+    plugin[name] = creator;
     plugin[name].prototype = {
-      constructor: init, pluginName: name
-      ,
-      config: function(element, data) {
+      pluginName: name,
+      constructor: creator,
+      config: function(data) {
+        data.self = data.self || this.self;
+        var element = data.self.element;
         for(var attr in data) {
           switch(attr) {
             case 'style':
@@ -29,10 +37,15 @@ var bs = {
                 console.error('internal error: "' + data.kind + '" !== "' + this.pluginName + '"');
               }
               break;
+            case 'self':
+              break;
+            case 'onclick':
+              element.onclick = data.self[data.onclick].bind(data.self);
+              break;
             default:
-              var setter = setters[attr];
+              var setter = body.setters[attr];
               if(setter) {
-                setter.bind(this)(element, data[attr]);
+                setter.bind(body)(element, data[attr]);
               } else {
                 console.warn('unknown configuration attribute "' + attr + '" for ' +
                              Object.getPrototypeOf(this).pluginName);

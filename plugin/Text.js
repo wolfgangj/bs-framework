@@ -1,7 +1,13 @@
-bs.plugin('Text', function(element, config) {
-  this.config(element, config);
+bs.plugin('Text', function(config) {
+  this.plugin.config(config);
 }, {
-  text: function(element, value) {
+  setters: {
+    text: function(element, value) {
+      this.setText(element, value);
+    }
+  }
+  ,
+  setText: function(element, value) {
     element.innerHTML = '';
     element.appendChild(document.createTextNode(value));
   }
