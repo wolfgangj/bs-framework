@@ -1,5 +1,5 @@
 var boxedLabel = {
-  kind: 'Container',
+  kind: 'Box',
   style: 'border:20px solid PeachPuff;background:grey;padding:10px;',
   content: {
     kind: 'Text',
