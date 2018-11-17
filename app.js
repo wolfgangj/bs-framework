@@ -1,4 +1,4 @@
-var app = BS.app({
+var boxedLabel = {
   kind: 'Container',
   style: 'border:20px solid PeachPuff;background:grey;padding:10px;',
   content: {
@@ -13,4 +13,25 @@ var app = BS.app({
       }
     }
   }
+};
+
+var app = BS.app({
+  kind: 'MultiBox',
+  class: 'MultiBox--vflex',
+  style: 'padding:10px',
+  content: [
+    {
+      kind: 'Text',
+      style: 'padding:10px',
+      text: 'Hello'
+    }
+    ,
+    {
+      kind: 'Text',
+      style: 'padding:10px',
+      text: 'world!'
+    }
+    ,
+    boxedLabel
+  ]
 });

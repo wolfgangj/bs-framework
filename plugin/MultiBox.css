@@ -1,0 +1,9 @@
+.MultiBox--vflex {
+  display: flex;
+  flex-direction: column;
+}
+
+.MultiBox--hflex {
+  display: flex;
+  flex-direction: row;
+}
