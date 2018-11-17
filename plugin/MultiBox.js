@@ -1,26 +1,27 @@
 BS.plugin('MultiBox', {
-  init: function(plugin, config) {
-    plugin.config(config);
+  init: function(config) {
+    this.plugin.config(config);
   }
   ,
   configurator: {
-    content: function(plugin, value) {
-      this.clean(plugin);
+    content: function(value) {
+      this.clean();
       for(var i = 0; i < value.length; i++) {
-        this.add(plugin, value[i]);
+        this.add(value[i]);
       }
     }
   }
   ,
-  clean: function(plugin) {
-    while (plugin.element.firstChild) {
-      plugin.element.removeChild(element.firstChild);
+  clean: function() {
+    var element = this.plugin.element;
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
     }
   }
   ,
-  add: function(plugin, config) {
+  add: function(config) {
     var node = document.createElement('div');
     BS.make(node, config);
-    plugin.element.appendChild(node);
+    this.plugin.element.appendChild(node);
   }
 });

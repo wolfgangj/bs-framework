@@ -1,5 +1,6 @@
 BS.plugin('Box', {
-  init: function(plugin, config) {
+  init: function(config) {
+    var plugin = this.plugin;
     plugin.contentNode = document.createElement('div');
     plugin.element.appendChild(plugin.contentNode);
 
@@ -7,8 +8,8 @@ BS.plugin('Box', {
   }
   ,
   configurator: {
-    content: function(plugin, value) {
-      BS.make(plugin.contentNode, value);
+    content: function(value) {
+      BS.make(this.plugin.contentNode, value);
     }
   }
 });

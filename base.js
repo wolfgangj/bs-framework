@@ -13,11 +13,12 @@ var BS = {
   plugin: function(name, body) {
     var creator = function(element, config) {
       this.element = element;
+      body.plugin = this;
       config.self = config.self || {};
       this.self = config.self;
       this.self.plugin = this;
       this.self.element = element;
-      body.init(this, config);
+      body.init(config);
     };
     Plugin[name] = creator;
     Plugin[name].prototype = {
@@ -47,7 +48,7 @@ var BS = {
             default:
               var setter = body.configurator[attr];
               if(setter) {
-                setter.bind(body)(this, config[attr]);
+                setter.bind(body)(config[attr]);
               } else {
                 console.warn('unknown configuration attribute "' + attr + '" for ' +
                              Object.getPrototypeOf(this).pluginName);
