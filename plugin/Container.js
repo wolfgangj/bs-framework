@@ -1,4 +1,4 @@
-bs.plugin('Container', {
+BS.plugin('Container', {
   init: function(plugin, config) {
     plugin.contentNode = document.createElement('div');
     plugin.element.appendChild(plugin.contentNode);
@@ -8,7 +8,7 @@ bs.plugin('Container', {
   ,
   configurator: {
     content: function(plugin, value) {
-      bs.make(plugin.contentNode, value);
+      BS.make(plugin.contentNode, value);
     }
   }
 });

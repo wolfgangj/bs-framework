@@ -1,4 +1,4 @@
-bs.plugin('Text', {
+BS.plugin('Text', {
   init: function(plugin, config) {
     plugin.textNode = document.createTextNode('');
     plugin.element.appendChild(plugin.textNode);

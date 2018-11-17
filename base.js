@@ -1,13 +1,13 @@
-var plugin = {};
+var Plugin = {};
 
-var bs = {
+var BS = {
   app: function(config) {
-    return bs.make(document.getElementById('app'), config);
+    return BS.make(document.getElementById('app'), config);
   }
   ,
   make: function(element, config) {
     element.className = config.kind;
-    return new plugin[config.kind](element, config);
+    return new Plugin[config.kind](element, config);
   }
   ,
   plugin: function(name, body) {
@@ -19,8 +19,8 @@ var bs = {
       this.self.element = element;
       body.init(this, config);
     };
-    plugin[name] = creator;
-    plugin[name].prototype = {
+    Plugin[name] = creator;
+    Plugin[name].prototype = {
       pluginName: name,
       constructor: creator,
       config: function(config) {

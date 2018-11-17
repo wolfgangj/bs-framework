@@ -1,4 +1,4 @@
-var app = bs.app({
+var app = BS.app({
   kind: 'Container',
   style: 'border:20px solid PeachPuff;background:grey;padding:10px;',
   content: {
