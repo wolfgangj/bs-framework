@@ -5,14 +5,22 @@ BS.plugin('MultiBox', {
   ,
   configurator: {
     content: function(plugin, value) {
-      var children = [];
+      this.clean(plugin);
       for(var i = 0; i < value.length; i++) {
-        var node = document.createElement('div');
-        BS.make(node, value[i]);
-        plugin.element.appendChild(node);
-        //children.push(node);
+        this.add(plugin, value[i]);
       }
-      //plugin.element.children = children;
     }
+  }
+  ,
+  clean: function(plugin) {
+    while (plugin.element.firstChild) {
+      plugin.element.removeChild(element.firstChild);
+    }
+  }
+  ,
+  add: function(plugin, config) {
+    var node = document.createElement('div');
+    BS.make(node, config);
+    plugin.element.appendChild(node);
   }
 });
