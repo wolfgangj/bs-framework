@@ -6,7 +6,7 @@ var BS = {
   }
   ,
   make: function(element, config) {
-    element.className = config.kind;
+    element.className = 'BS-Element ' + config.kind;
     return new Plugin[config.kind](element, config);
   }
   ,
@@ -55,6 +55,14 @@ var BS = {
               }
           }
         }
+      }
+    }
+  }
+  ,
+  lib: {
+    clearElementContent: function(element) {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
       }
     }
   }

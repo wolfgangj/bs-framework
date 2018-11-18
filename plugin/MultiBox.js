@@ -5,17 +5,10 @@ BS.plugin('MultiBox', {
   ,
   configurator: {
     content: function(value) {
-      this.clean();
+      BS.lib.clearElementContent(this.plugin.element);
       for(var i = 0; i < value.length; i++) {
         this.add(value[i]);
       }
-    }
-  }
-  ,
-  clean: function() {
-    var element = this.plugin.element;
-    while (element.firstChild) {
-      element.removeChild(element.firstChild);
     }
   }
   ,
