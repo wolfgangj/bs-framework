@@ -5,7 +5,7 @@ BS.plugin('MultiBox', {
   ,
   configurator: {
     content: function(value) {
-      BS.lib.clearElementContent(this.plugin.element);
+      BS.lib.clearElementContent(this.element);
       for(var i = 0; i < value.length; i++) {
         this.add(value[i]);
       }
@@ -15,6 +15,6 @@ BS.plugin('MultiBox', {
   add: function(config) {
     var node = document.createElement('div');
     BS.make(node, config);
-    this.plugin.element.appendChild(node);
+    this.element.appendChild(node);
   }
 });

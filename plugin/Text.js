@@ -1,17 +1,15 @@
 BS.plugin('Text', {
   init: function(config) {
-    var plugin = this.plugin;
+    this.textNode = document.createTextNode('');
+    this.element.appendChild(this.textNode);
 
-    plugin.textNode = document.createTextNode('');
-    plugin.element.appendChild(plugin.textNode);
-
-    plugin.config(config);
+    this.plugin.config(config);
     this.hello('hello');
   }
   ,
   configurator: {
     text: function(value) {
-      this.plugin.textNode.data = value.toString();
+      this.textNode.data = value.toString();
       this.hello('world');
     }
   }

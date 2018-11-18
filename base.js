@@ -12,10 +12,10 @@ var BS = {
   ,
   plugin: function(name, body) {
     var creator = function(element, config) {
-      this.element = element;
+      body.element = element;
       body.plugin = this;
       config.self = config.self || {};
-      this.self = config.self;
+      this.self = config.self; // needed if later calling config() w/o self.
       this.self.plugin = this;
       this.self.element = element;
       body.init(config);

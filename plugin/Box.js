@@ -1,15 +1,14 @@
 BS.plugin('Box', {
   init: function(config) {
-    var plugin = this.plugin;
-    plugin.contentNode = document.createElement('div');
-    plugin.element.appendChild(plugin.contentNode);
+    this.contentNode = document.createElement('div');
+    this.element.appendChild(this.contentNode);
 
-    plugin.config(config);
+    this.plugin.config(config);
   }
   ,
   configurator: {
     content: function(value) {
-      BS.make(this.plugin.contentNode, value);
+      BS.make(this.contentNode, value);
     }
   }
 });
