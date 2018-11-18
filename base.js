@@ -1,8 +1,8 @@
 var Plugin = {};
 
 var BS = {
-  app: function(config) {
-    return BS.make(document.getElementById('app'), config);
+  app: function(id, config) {
+    return BS.make(document.getElementById(id), config);
   }
   ,
   make: function(element, config) {

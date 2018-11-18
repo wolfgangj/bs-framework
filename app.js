@@ -15,7 +15,7 @@ var boxedLabel = {
   }
 };
 
-var app = BS.app({
+var app = BS.app('app', {
   kind: 'MultiBox',
   class: 'MultiBox--vflex',
   style: 'padding:10px',
